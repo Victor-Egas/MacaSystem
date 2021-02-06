@@ -33,7 +33,15 @@
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
-
+		<style type="text/css">
+		
+			.precio{
+					text-align: center;
+					width: 150px;
+			
+			}
+		
+		</style>
     </head>
 	<body>
 		<!-- HEADER -->
@@ -135,8 +143,8 @@
 											<h5>SUBTOTAL: $2940.00</h5>
 										</div>
 										<div class="cart-btns">
-											<a href="#">View Cart</a>
-											<a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+											<a href="Carrito?accion=productos">Productos</a>
+											<a href="Carrito?accion=resumenPedido">Detalle <i class="fa fa-arrow-circle-right"></i></a>
 										</div>
 									</div>
 								</div>
@@ -436,7 +444,7 @@
 									<div class="product-body">
 										<p class="product-category">Category</p>
 										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<h4 class="product-price">$980.00</h4>
 										<div class="product-rating">
 											<i class="fa fa-star"></i>
 											<i class="fa fa-star"></i>
@@ -451,7 +459,7 @@
 										</div>
 									</div>
 									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Agregar</button>
 									</div>
 								</div>
 							</div>
@@ -469,7 +477,7 @@
 									<div class="product-body">
 										<p class="product-category">Category</p>
 										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<h4 class="product-price">$980.00</h4>
 										<div class="product-rating">
 											<i class="fa fa-star"></i>
 											<i class="fa fa-star"></i>
@@ -484,7 +492,7 @@
 										</div>
 									</div>
 									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Agregar</button>
 									</div>
 								</div>
 							</div>
@@ -501,7 +509,7 @@
 									<div class="product-body">
 										<p class="product-category">Category</p>
 										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<h4 class="product-price">$980.00</h4>
 										<div class="product-rating">
 										</div>
 										<div class="product-btns">
@@ -511,7 +519,7 @@
 										</div>
 									</div>
 									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Agregar</button>
 									</div>
 								</div>
 							</div>
@@ -528,7 +536,7 @@
 									<div class="product-body">
 										<p class="product-category">Category</p>
 										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<h4 class="product-price">$980.00</h4>
 										<div class="product-rating">
 										</div>
 										<div class="product-btns">
@@ -538,7 +546,7 @@
 										</div>
 									</div>
 									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Agregar</button>
 									</div>
 								</div>
 							</div>
@@ -555,7 +563,7 @@
 									<div class="product-body">
 										<p class="product-category">Category</p>
 										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<h4 class="product-price">$980.00</h4>
 										<div class="product-rating">
 										</div>
 										<div class="product-btns">
@@ -565,7 +573,7 @@
 										</div>
 									</div>
 									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Agregar</button>
 									</div>
 								</div>
 							</div>
@@ -580,7 +588,7 @@
 									<div class="product-body">
 										<p class="product-category">Category</p>
 										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<h4 class="product-price">$980.00</h4>
 										<div class="product-rating">
 											<i class="fa fa-star"></i>
 											<i class="fa fa-star"></i>
@@ -595,7 +603,7 @@
 										</div>
 									</div>
 									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Agregar</button>
 									</div>
 								</div>
 							</div>
@@ -612,7 +620,7 @@
 									<div class="product-body">
 										<p class="product-category">Category</p>
 										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<h4 class="product-price">$980.00 </h4>
 										<div class="product-rating">
 											<i class="fa fa-star"></i>
 											<i class="fa fa-star"></i>
@@ -642,7 +650,7 @@
 									<div class="product-body">
 										<p class="product-category">Category</p>
 										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<h4 class="product-price">$980.00 </h4>
 										<div class="product-rating">
 										</div>
 										<div class="product-btns">
@@ -652,7 +660,7 @@
 										</div>
 									</div>
 									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Agregar</button>
 									</div>
 								</div>
 							</div>
@@ -660,6 +668,8 @@
 
 							<div class="clearfix visible-sm visible-xs"></div>
 
+						
+							
 							<!-- product -->
 							<div class="col-md-4 col-xs-6">
 								<div class="product">
@@ -668,8 +678,8 @@
 									</div>
 									<div class="product-body">
 										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<h3 class="product-name"><a href="#">OTRO PEDIDO</a></h3>
+										<h4 class="product-price">S/.<input class="precio" ></h4>
 										<div class="product-rating">
 										</div>
 										<div class="product-btns">
@@ -679,7 +689,7 @@
 										</div>
 									</div>
 									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Agregar</button>
 									</div>
 								</div>
 							</div>
@@ -690,13 +700,7 @@
 						<!-- store bottom filter -->
 						<div class="store-filter clearfix">
 							<span class="store-qty">Showing 20-100 products</span>
-							<ul class="store-pagination">
-								<li class="active">1</li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-							</ul>
+							
 						</div>
 						<!-- /store bottom filter -->
 					</div>

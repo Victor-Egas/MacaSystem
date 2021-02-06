@@ -35,20 +35,13 @@
 		<![endif]-->
 		<style type="text/css">
 		
-			.msj{
-					margin: 0 auto;
-					color: red;
-					background-color: gray;
-			}
-		
-		
 			.texto{
 					width:  250px;
 					height:40px;
 					margin:0 auto;
 					border-radius: 15px; 
 					
-					
+					font-family: 'Exo 2', sans-serif;
 			}
 			
 			.boton:hover {
@@ -64,7 +57,7 @@
 			
 			.cabecera{
 				font-size: 70px;
-				margin-left: 550px;
+				margin-left: 400px;
 				font-family: 'Exo 2', sans-serif;
 			
 			}			
@@ -206,8 +199,8 @@
 											<h5>SUBTOTAL: $2940.00</h5>
 										</div>
 										<div class="cart-btns">
-											<a href="#">View Cart</a>
-											<a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+											<a href="Carrito?accion=productos">Productos</a>
+											<a href="#">Detalle  <i class="fa fa-arrow-circle-right"></i></a>
 										</div>
 									</div>
 								</div>
@@ -240,31 +233,11 @@
 		
 		<!-- DIV DE LOGUEO -->
 			<br> <br>
-			<label class="cabecera">LOGUIN</label>
+			<label class="cabecera">CARRITO VACIO</label>
 			
 			<div class="loguin">
 				
-				<form class="caja" action="Loguin" method="post">
-						
-							
-								<input type="text" class="texto" name="usuario" id="usuario" placeholder="Usuario"  required>
-							
-								<br> <br>
-								<input type="password"  class="texto" name="clave" placeholder="Contraseña" id="clave" required><br>
-								<img alt="" src="img/iconfinder_icon-eye_211661.png" class="img" onclick="mostrar()">
-								<br>
-								
-								<br> <br>
-								
-								<div id="msj" class="msj">${msj}</div>
-								<br> <br>
-							
-								<input type="submit" class="boton" value="Iniciar Sesion" >
-								<br>
-								
-						
-					
-				</form>		
+				<label class="texto"></label>
 				
 								
 			</div>
