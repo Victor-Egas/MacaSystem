@@ -1,6 +1,8 @@
 package com.ventas.servlet;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,7 +32,7 @@ public class LoguinServlet extends HttpServlet {
 	
 		String usuario= request.getParameter("usuario");
 		String clave= request.getParameter("clave");
-		String mensaje="CLAVE INCORRECTA";
+		String mensaje="USUARIO Y/O CLAVE INCORRECTA";
 		System.out.println("Entro servlet");
 		if(usuario.equalsIgnoreCase("administrador") && clave.equalsIgnoreCase("administrador")) {
 			 
@@ -40,7 +42,8 @@ public class LoguinServlet extends HttpServlet {
 		else {
 			
 			request.setAttribute("msj", mensaje);
-			response.sendRedirect("Loguin.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("Loguin.jsp");
+			rd.forward(request, response);
 		}
 		
 	}

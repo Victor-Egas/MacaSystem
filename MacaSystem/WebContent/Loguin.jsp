@@ -35,11 +35,12 @@
 		<![endif]-->
 		<style type="text/css">
 		
-			.msj{
-					margin: 0 auto;
+			
+		   	.msj{
+					font-weight: bold;
 					color: red;
-					background-color: gray;
 			}
+			
 		
 		
 			.texto{
@@ -256,7 +257,7 @@
 								
 								<br> <br>
 								
-								<div id="msj" class="msj">${msj}</div>
+								<label class="msj">${msj}</label>
 								<br> <br>
 							
 								<input type="submit" class="boton" value="Iniciar Sesion" >
