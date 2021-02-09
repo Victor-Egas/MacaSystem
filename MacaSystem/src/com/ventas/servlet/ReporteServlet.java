@@ -1,11 +1,18 @@
 package com.ventas.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.ventas.dao.PedidoDao;
+import com.ventas.dao.Impl.PedidoDaoImpl;
+import com.ventas.dto.DetallePedido;
 
 /**
  * Servlet implementation class ReporteServlet
@@ -25,9 +32,30 @@ public class ReporteServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		String accion=request.getParameter("accion");
+		System.out.println("antes del switch");
+		switch (accion) {
+		
+		case "listaDetalle":
+			//int codigo=0;
+			PedidoDao pd=new PedidoDaoImpl();
+			System.out.println("entro mi servlet");
+			try {
+				List<DetallePedido> listadetalle= pd.listaDetalle(1);
+				request.setAttribute("listaDetalle", listadetalle);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			response.sendRedirect("Resumen.jsp");
+			break;
+
+		}
 	}
 
 	/**

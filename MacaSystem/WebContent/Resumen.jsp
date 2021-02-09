@@ -2,6 +2,7 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.ventas.dto.Pedido"%>
+<%@page import="com.ventas.dto.DetallePedido"%>
 <%@page import="com.ventas.dao.PedidoDao"%>
 <%@page import="com.ventas.dao.Impl.PedidoDaoImpl"%>
 <%@page import="java.util.List"%>
@@ -13,7 +14,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-<title>Electro - HTML Ecommerce Template</title>
+<title>Los Amigos de Maca</title>
 
 <!-- Google font -->
 <link
@@ -44,7 +45,7 @@
 		<![endif]-->
 <style type="text/css">
 table {
-	border: 3px solid #ccc;
+	border: 3px solid #000;
 	width: 80%;
 	margin: 0 auto;
 	padding: 0;
@@ -54,18 +55,20 @@ table {
 }
 
 table tr {
-	border: 2px solid #ddd;
+	border: 2px solid #000;
 	padding: 5px;
 }
 
 table tr:nth-child(even) {
 	background-color: FFE09E;
 	color: black;
+	
 }
 
 table td, table th {
 	padding: 10px;
 	text-align: center;
+	border: 2px solid #000;
 }
 
 table th {
@@ -74,6 +77,12 @@ table th {
 	letter-spacing: 1px;
 	background-color: skyblue;
 	font-size: 20px;
+}
+
+.busqueda{
+    background-color: gray;
+	margin-bottom: 20px;
+	margin-top: 20px;
 }
 
 .texto {
@@ -115,6 +124,40 @@ table th {
 	margin-left: 540px;
 	text-align: center;
 }
+/* ESTILOS PARA EL POP UP */
+
+.overlay{
+	background: rgba(0,0,0,.4);
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;	
+	visibility: hidden;
+}
+
+.overlay.active{
+	visibility: visible;
+}
+
+.popup{
+	background: #f8f8f8;
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,.4);
+	border-radius: 4px;
+	font-family: 'Exo 2', sans-serif;
+	padding: 20px;
+	text-align: center;
+	width: 700px;
+	
+	
+}
+
+
+
+/*-- Fin ESTILOS POP UP --*/
 </style>
 
 <script type="text/javascript">
@@ -126,6 +169,8 @@ table th {
 			tipo.type = "password";
 		}
 	}
+	
+	
 </script>
 
 </head>
@@ -274,6 +319,13 @@ table th {
 		<!-- DIV DE LOGUEO -->
 		<br> <br> <label class="cabecera">LISTADO DE PEDIDOS</label>
 
+		<div class="busqueda">
+		
+			<input class="codPedido" type="text"  placeholder="Codigo Pedido">
+			<button class="btnAbrir" id="btnAbrir" >Detalles</button>
+		</div>
+
+
 		<div class="listado">
 
 			<table border="1" class="text">
@@ -285,7 +337,7 @@ table th {
 						<th>ID_USUARIO</th>
 
 
-						<th>&nbsp;</th>
+						
 					</tr>
 				</thead>
 				<tbody>
@@ -304,7 +356,7 @@ table th {
 						<td><%=p.getMonto_pedido()%></td>
 						<td><%=p.getCodigo_usuario()%></td>
 
-						<td><a href="#">DETALLE</a></td>
+						
 
 					</tr>
 					<%
@@ -317,10 +369,9 @@ table th {
 
 		</div>
 
-		<!-- / DIV DE LOGUEO -->
-
-
-
+		<!-- / DIV DE TABLA-->
+		
+		
 	</div>
 
 
@@ -456,6 +507,58 @@ table th {
 		</div>
 		<!-- /bottom footer -->
 	</footer>
+	
+	<!-- INICIO DIV DEL POP UP -->
+	
+	<div class="overlay" id="overlay">
+	    <div class="popup" id="popup">
+	    	<h3>DETALLE DEL PEDIDO</h3>
+	    	<div>
+	    		<table>
+	    			<thead>
+					<tr>
+						<th>NOMBRE</th>
+						<th>CANTIDAD</th>
+						<th>PRECIO</th>
+						<th>SUBTOTAL</th>
+						
+
+
+						
+					</tr>
+				</thead>
+				<tbody>
+					
+					<%
+						List<DetallePedido> listaDetalle = null;
+					PedidoDao dpdao=new PedidoDaoImpl(); 
+					listaDetalle = dpdao.listaDetalle(1);
+
+					for (DetallePedido dp: listaDetalle) {
+					%>
+					<tr>
+					
+						<td><%=dp.getNombre_producto() %></td>
+						<td><%=dp.getCantidad_pro_pedido() %></td>
+						<td><%=dp.getPrecio_producto() %></td>
+						<td><%=dp.getSubtotal_pro_pedido() %></td>
+						
+
+					</tr>
+					<%} %>
+				</tbody>
+	    		</table>
+	    		<br>
+	    		
+	    		<button class="boton" id="btnCerrar" >Cerrar</button>
+	    	</div>
+	    
+	    
+	    </div>
+	
+	
+	</div>
+	<!-- FIN / DIV DEL POP UP -->
 	<!-- /FOOTER -->
 
 	<!-- jQuery Plugins -->
@@ -467,4 +570,26 @@ table th {
 	<script src="js/main.js"></script>
 
 </body>
+
+<script type="text/javascript">
+/* INICIO EVENTOS POPUP */
+
+var abrirPopUp=document.getElementById("btnAbrir"),
+	overlay=document.getElementById("overlay"),
+	popup=document.getElementById("popup"),
+	cerrarPopUp=document.getElementById("btnCerrar");	
+
+	abrirPopUp.addEventListener('click',function(){
+		
+		overlay.classList.add('active');
+	})
+	
+	cerrarPopUp.addEventListener('click',function(){
+		
+		overlay.classList.remove('active');
+	})	
+
+
+/* FIN EVENTOS POPUP */
+</script>
 </html>
