@@ -12,5 +12,7 @@ public interface PedidoDao {
 	
 	public List<Pedido> listaPedido() throws SQLException;
 	
+	public List<Pedido> listaPorCodigo(int codigo) throws SQLException;
+	
 	public List<DetallePedido> listaDetalle(int codigo) throws SQLException;
 }

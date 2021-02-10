@@ -46,7 +46,42 @@ public class PedidoDaoImpl implements PedidoDao {
 
         return lista;
 	}
+	
+	
 
+
+	public List<Pedido> listaPorCodigo(int codigo) throws SQLException {
+		List<Pedido> listaPorCodigo = new ArrayList<>();
+    
+        ResultSet rs = null; // tipo de resultado
+		Connection con = null;
+		PreparedStatement pst = null;
+		
+		 con =MySQLConexion.getConexion(); 
+		   String sql = "SELECT * FROM db_macafood.tb_pedido where codigo_pedido=?"; // sentencia sql
+		   pst = con.prepareStatement(sql);
+		   // parámetros según la sentencia		
+		   pst.setInt(1, codigo );
+		  // System.out.println("entro  a impl");
+		   rs = pst.executeQuery();
+		   
+        while (rs.next()) {
+            Pedido registro = new Pedido(rs.getInt("codigo_pedido"),
+            							 rs.getString("fecha_pedido"),
+            		                     rs.getDouble("monto_pedido"), 
+            		                     rs.getInt("codigo_usuario"));
+            listaPorCodigo.add(registro);
+        }
+       // System.out.println("selectos");
+   //     MySQLConexion.getConexion().close();
+
+        return listaPorCodigo;
+	}
+	
+	
+	
+	
+	
 	@Override
 	public List<DetallePedido> listaDetalle(int codigo) throws SQLException {
 		List<DetallePedido> listaDetalle = new ArrayList<>();
@@ -77,5 +112,7 @@ public class PedidoDaoImpl implements PedidoDao {
 
         return listaDetalle;
 	}
+
+	
 
 }

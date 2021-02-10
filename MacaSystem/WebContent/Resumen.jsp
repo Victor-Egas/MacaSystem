@@ -80,9 +80,12 @@ table th {
 }
 
 .busqueda{
-    background-color: gray;
+	height: 80px;
+   
 	margin-bottom: 20px;
 	margin-top: 20px;
+	padding-left: 150px;
+	padding-top: 20px;
 }
 
 .texto {
@@ -92,8 +95,29 @@ table th {
 	border-radius: 15px;
 	font-family: 'Exo 2', sans-serif;
 }
+.botonBuscar{
+		width: 150px;
+	height: 40px;
+	margin-right:210px;
+	border-radius: 10px;
+	font-weight: bold;
+	font-size: 18px;
+	background: #D10024;
+	color: #FFF;
+	
+	
+	
+}
+
+.botonBuscar:hover{
+	background: black;
+}
 
 .boton:hover {
+	background: black;
+}
+
+.btnAbrir:hover{
 	background: black;
 }
 
@@ -141,6 +165,19 @@ table th {
 
 .overlay.active{
 	visibility: visible;
+}
+
+.btnAbrir{
+		width: 150px;
+	height: 40px;
+	
+	border-radius: 10px;
+	font-weight: bold;
+	font-size: 18px;
+	background: #D10024;
+	color: #FFF;
+	
+	
 }
 
 .popup{
@@ -285,7 +322,7 @@ table th {
 										<h5>SUBTOTAL: $2940.00</h5>
 									</div>
 									<div class="cart-btns">
-										<a href="Carrito?accion=productos">Productos</a> <a href="#">Detalle
+										<a href="Carrito?accion=productos" id="as">Productos</a> <a href="#">Detalle
 											<i class="fa fa-arrow-circle-right"></i>
 										</a>
 									</div>
@@ -320,12 +357,17 @@ table th {
 		<br> <br> <label class="cabecera">LISTADO DE PEDIDOS</label>
 
 		<div class="busqueda">
-		
-			<input class="codPedido" type="text"  placeholder="Codigo Pedido">
+			<form action="ReporteServlet" >
+			    <input type="hidden" name="accion" value="listarPorFiltro">
+				<input class="texto" type="text"  name="codigo"  placeholder="Ingrese el Codigo">
+				<input class="texto" type="date" name="fecha" placeholder="Ingrese la fecha">
+				<input type="submit" class="botonBuscar" value="Buscar" >
+				
+			</form><br>
 			<button class="btnAbrir" id="btnAbrir" >Detalles</button>
 		</div>
 
-
+		<br><br>
 		<div class="listado">
 
 			<table border="1" class="text">
@@ -345,13 +387,17 @@ table th {
 						List<Pedido> lista = null;
 					PedidoDao pdao = new PedidoDaoImpl();
 					lista = pdao.listaPedido();
-
+					
+					if(request.getAttribute("listaCodigo") != null){
+						lista=(List<Pedido>) request.getAttribute("listaCodigo");
+					}
+					
 					for (Pedido p : lista) {
 					%>
 
 					<tr>
 
-						<td><%=p.getCodigo_pedido()%></td>
+						<td id="codigoDetalle"><%=p.getCodigo_pedido()%></td>
 						<td><%=p.getFecha_pedido()%></td>
 						<td><%=p.getMonto_pedido()%></td>
 						<td><%=p.getCodigo_usuario()%></td>
@@ -513,6 +559,8 @@ table th {
 	<div class="overlay" id="overlay">
 	    <div class="popup" id="popup">
 	    	<h3>DETALLE DEL PEDIDO</h3>
+	    	<br>
+	    	<label id="codigoPed"></label>
 	    	<div>
 	    		<table>
 	    			<thead>
@@ -529,10 +577,15 @@ table th {
 				</thead>
 				<tbody>
 					
-					<%
+					<%  int codBus;
+						if(request.getParameter("codi") == null){
+							codBus=2;
+						}else{
+							codBus=Integer.parseInt(request.getParameter("codi"));
+						}
 						List<DetallePedido> listaDetalle = null;
 					PedidoDao dpdao=new PedidoDaoImpl(); 
-					listaDetalle = dpdao.listaDetalle(1);
+					listaDetalle = dpdao.listaDetalle(codBus);
 
 					for (DetallePedido dp: listaDetalle) {
 					%>
@@ -546,6 +599,7 @@ table th {
 
 					</tr>
 					<%} %>
+					
 				</tbody>
 	    		</table>
 	    		<br>
@@ -555,7 +609,7 @@ table th {
 	    
 	    
 	    </div>
-	
+		
 	
 	</div>
 	<!-- FIN / DIV DEL POP UP -->
@@ -574,6 +628,8 @@ table th {
 <script type="text/javascript">
 /* INICIO EVENTOS POPUP */
 
+
+
 var abrirPopUp=document.getElementById("btnAbrir"),
 	overlay=document.getElementById("overlay"),
 	popup=document.getElementById("popup"),
@@ -591,5 +647,7 @@ var abrirPopUp=document.getElementById("btnAbrir"),
 
 
 /* FIN EVENTOS POPUP */
+ 
+ 
 </script>
 </html>
